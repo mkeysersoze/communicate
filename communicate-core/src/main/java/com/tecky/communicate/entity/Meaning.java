@@ -12,17 +12,18 @@ import com.tecky.common.model.AbstractEntity;
 
 /**
  * A class representing the meaning of a given expression.
+ * 
  * @author mekysersoze
  * 
  */
 @Entity
-@Table(name="meaning")
+@Table(name = "meaning")
 public class Meaning extends AbstractEntity {
 	private static final long serialVersionUID = 6594666817780817969L;
 
 	private String text;
 
-	@OneToMany(cascade = CascadeType.PERSIST)
+	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
 	@JoinColumn(name = "meaning_id")
 	private List<Example> examples;
 

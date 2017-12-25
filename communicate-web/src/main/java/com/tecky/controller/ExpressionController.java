@@ -1,5 +1,6 @@
 package com.tecky.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.tecky.communicate.entity.Expression;
+import com.tecky.communicate.entity.Meaning;
 import com.tecky.communicate.repository.ExpressionRepository;
 
 @Controller
@@ -27,13 +29,20 @@ public class ExpressionController {
 
 	@GetMapping(path = "/form")
 	public String showForm(Model model) {
-		model.addAttribute("expression", new Expression());
+		Expression newExpression = new Expression();
+		Meaning meaning = new Meaning();
+
+		model.addAttribute("expression", newExpression);
+		model.addAttribute("meaning", meaning);
+
 		return "expressionForm";
 	}
 
 	@PostMapping(path = "/processForm")
-	public String expressionSubmit(@ModelAttribute Expression expression) {
-		logger.info(expression.toString());
+	public String expressionSubmit(@ModelAttribute Expression expression, @ModelAttribute Meaning meaning) {
+		List<Meaning> meanings = new ArrayList<Meaning>();
+		meanings.add(meaning);
+		expression.setMeanings(meanings);
 		expressionRepository.save(expression);
 		return "redirect:/expressions";
 	}
