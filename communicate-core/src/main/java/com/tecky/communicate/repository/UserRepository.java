@@ -5,9 +5,8 @@ import com.tecky.communicate.entity.User;
 
 /**
  * @author mekysersoze
- *
  */
 public interface UserRepository extends GenericRepository<User> {
 
-	User findByUsername(String username);
+    User findByUsername(String username);
 }

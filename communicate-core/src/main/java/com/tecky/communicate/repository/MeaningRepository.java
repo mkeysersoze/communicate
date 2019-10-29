@@ -5,7 +5,6 @@ import com.tecky.communicate.entity.Meaning;
 
 /**
  * @author mekysersoze
- *
  */
 public interface MeaningRepository extends GenericRepository<Meaning> {
 

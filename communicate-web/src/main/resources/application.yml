@@ -1,0 +1,9 @@
+flyway:
+    enabled: true
+security:
+  basic:
+    enabled: false
+
+rest-resources:
+  resource:
+    expressions: /api/expressions

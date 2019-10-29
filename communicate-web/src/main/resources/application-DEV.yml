@@ -1,0 +1,9 @@
+spring:
+  jpa:
+    generate-ddl: false
+    hibernate:
+      ddl-auto: none
+  datasource:
+    url: jdbc:postgresql://localhost:5433/communicatedb  # JDBC URL of the database.
+    username: com # Login username of the database.
+    password: com # Login password of the database.
